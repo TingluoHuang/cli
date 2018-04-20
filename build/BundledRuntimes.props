@@ -52,7 +52,7 @@
     <CoreSetupDownloadDirectory>$(IntermediateDirectory)/coreSetupDownload/$(MicrosoftNETCoreAppPackageVersion)</CoreSetupDownloadDirectory>
     <CombinedSharedHostAndFrameworkArchive>$(CoreSetupDownloadDirectory)/combinedSharedHostAndFrameworkArchive$(ArchiveExtension)</CombinedSharedHostAndFrameworkArchive>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <_DownloadAndExtractItem Include="AspNetCoreSharedFxArchiveFile"
                              Condition="!Exists('$(AspNetCoreSharedFxArchiveFile)') And !$(Architecture.StartsWith('arm'))">

@@ -217,6 +217,10 @@
               $(RpmTestResultsXmlFile);"
           Outputs="$(RpmTestResultsXmlFile)" >
 
+    <ItemGroup>
+      <AspNetCoreRpmInstallerFileReversed Include="@(AspNetCoreRpmInstallerFile->Reverse())" />
+    </ItemGroup>
+
     <!-- Install Dependencies and SDK Packages -->
     <Exec Command="sudo yum -y install $(DownloadedRuntimeDepsInstallerFile)" />
     <Exec Command="sudo yum -y install $(DownloadedSharedHostInstallerFile)" />

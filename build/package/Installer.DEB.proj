@@ -27,6 +27,7 @@
                         GetAspNetSharedFxInstallArgs;"
       Inputs="@(CLISdkFiles)"
       Outputs="$(SdkInstallerFile)" >
+
       <!-- Install Shared Framework Packages -->
 
       <Exec Command="sudo dpkg -i $(DownloadedRuntimeDepsInstallerFile)" />
@@ -108,8 +109,13 @@
       Inputs="$(DownloadedSharedHostInstallerFile);
               $(DownloadedHostFxrInstallerFile);
               $(DownloadedSharedFrameworkInstallerFile);
+              @(AspNetCoreDebInstallerFile);
               $(SdkInstallerFile);"
       Outputs="$(DebianTestResultsXmlFile)" >
+
+      <ItemGroup>
+        <AspNetCoreDebInstallerFileReversed Include="@(AspNetCoreDebInstallerFile->Reverse())" />
+      </ItemGroup>
 
       <!-- Install Dependencies and SDK Packages -->
       <Exec Command="sudo dpkg -i $(DownloadedRuntimeDepsInstallerFile)" />
